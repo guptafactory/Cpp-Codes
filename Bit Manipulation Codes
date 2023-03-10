@@ -1,0 +1,77 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+
+void file()
+{
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+}
+
+bool isOdd(int n)
+{
+	return (n & 1);
+}
+
+bool getBit(int n, int i)
+{
+	i--;
+	int mask = (1 << i);
+	return (n & mask);
+}
+
+int setBit(int n, int i)
+{
+	i--;
+	int mask = (1 << i);
+	return (n | mask);
+}
+
+int clearBit(int n, int i)
+{
+	i--;
+	int mask = ~(1 << i);
+	return (n & mask);
+}
+
+int toggleBit(int n, int i)
+{
+	i--;
+	int mask = (1 << i);
+	return (n ^ mask);
+}
+
+int setLastBits(int n, int i)
+{
+	int mask = (1 << i) - 1;
+	return (n | mask);
+}
+
+int clearLastBits(int n, int i)
+{
+	int mask = ~((1 << i) - 1);
+	return (n & mask);
+}
+
+signed main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+	file();
+	// int test{0}; cin>>test;
+	// while(test--)
+	{
+		// i >= 1 (1-indexing)
+		int n = 8, i = 3, temp{0};
+		cout << "Odd: " << isOdd(n) << endl;
+		cout << "Get Bit: " << getBit(n, i) << endl;
+		cout << "Set given Bit: " << setBit(n, i) << endl;
+		cout << "Clear given Bit: " << clearBit(n, i) << endl;
+		cout << "Toggle Bit: " << toggleBit(n, i) << endl;
+		cout << "Set last Bits: " << setLastBits(n, i) << endl;
+		cout << "Clear last Bits: " << clearLastBits(n, i) << endl;
+	}
+	return 0;
+}

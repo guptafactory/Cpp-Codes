@@ -55,6 +55,21 @@ int clearLastBits(int n, int i)
 	return (n & mask);
 }
 
+int setBitRange(int n, int l, int r)
+{
+	int mask = (1 << l) - 1;
+	mask &= ~((1 << (r - 1)) - 1);
+	return (n | mask);
+}
+
+int clearBitRange(int n, int l, int r)
+{
+	int mask = (~0 << l);
+	mask |=  (1 << r) - 1;
+	return (n & mask);
+}
+
+
 signed main()
 {
 	ios_base::sync_with_stdio(false);
@@ -64,7 +79,7 @@ signed main()
 	// while(test--)
 	{
 		// i >= 1 (1-indexing)
-		int n = 8, i = 3, temp{0};
+		int n = 8, i = 1, j = 2, temp = 0;
 		cout << "Odd: " << isOdd(n) << endl;
 		cout << "Get Bit: " << getBit(n, i) << endl;
 		cout << "Set given Bit: " << setBit(n, i) << endl;
@@ -72,6 +87,8 @@ signed main()
 		cout << "Toggle Bit: " << toggleBit(n, i) << endl;
 		cout << "Set last Bits: " << setLastBits(n, i) << endl;
 		cout << "Clear last Bits: " << clearLastBits(n, i) << endl;
+		cout << "Set Bit Range: " << setBitRange(n, j, i) << endl;
+		cout << "Clear Bit Range: " << clearBitRange(n, j, i) << endl;
 	}
 	return 0;
 }
